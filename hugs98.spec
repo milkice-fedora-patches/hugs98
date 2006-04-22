@@ -8,7 +8,7 @@ Summary:	Haskell Interpreter
 Group:		Development/Languages
 License:	BSD
 URL:		http://www.haskell.org/hugs
-Source0:	http://cvs.haskell.org/Hugs/downloads/Mar2005/hugs98-Mar2005-patched.tar.gz
+Source0:	http://cvs.haskell.org/Hugs/downloads/Mar2005/%{name}-%{hugs_ver}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	docbook-utils
