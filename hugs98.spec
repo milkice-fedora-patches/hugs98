@@ -2,13 +2,14 @@
 
 Name:		hugs98
 Version:	2005.03
-Release:	1%{?dist}
+Release:	4%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
 License:	BSD
 URL:		http://www.haskell.org/hugs
 Source0:	http://cvs.haskell.org/Hugs/downloads/Mar2005/%{name}-%{hugs_ver}.tar.gz
+Patch0:		openal-1.0_1.2.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	docbook-utils
@@ -23,12 +24,21 @@ BuildRequires:	libXmu-devel
 BuildRequires:	libXt-devel
 BuildRequires:	readline-devel
 BuildRequires:	xorg-x11-proto-devel
-#BuildRequires:	openal-devel
+BuildRequires:	openal-devel
 
 %description
 Hugs 98 is a functional programming system based on Haskell 98, the de
 facto standard for non-strict functional programming languages. Hugs
 98 provides an almost complete implementation of Haskell 98.
+
+
+%package openal
+Summary:	OpenAL package for Hugs98
+Group:		Development/Languages
+Requires:	%{name} = %{version}-%{release}
+
+%description openal
+OpenAL package for Hugs98.
 
 
 %package x11
@@ -82,6 +92,7 @@ Demo files for Hugs98.
 
 %prep
 %setup -q -n %{name}-%{hugs_ver}
+%patch0 -p1
 
 
 %build
@@ -116,6 +127,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/users_guide/users_guide
 %{_bindir}/*
 %{_libdir}/hugs
+%exclude %{_libdir}/hugs/packages/OpenAL
 %exclude %{_libdir}/hugs/packages/X11
 %exclude %{_libdir}/hugs/packages/OpenGL
 %exclude %{_libdir}/hugs/packages/GLUT
@@ -126,6 +138,11 @@ rm -rf $RPM_BUILD_ROOT
 %files demos
 %defattr(-,root,root,-)
 %doc installed-demos/*
+
+
+%files openal
+%defattr(-,root,root,-)
+%{_libdir}/hugs/packages/OpenAL
 
 
 %files x11
@@ -149,6 +166,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Apr 24 2006 Gerard Milmeister <gemi@bluewin.ch> - 2005.03-3
+- added patch provided by Jens Petersen to build OpenAL package
+
 * Tue Apr 18 2006 Gerard Milmeister <gemi@bluewin.ch> - 2005.03-1
 - changed version numbering scheme
 - split off demos package
