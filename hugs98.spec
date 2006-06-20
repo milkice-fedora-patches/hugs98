@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.05
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -102,7 +102,8 @@ Demo files for Hugs98.
 
 %prep
 %setup -q -n %{name}-%{hugs_ver}
-
+# this is to avoid network lookup of the DTD
+sed -i 's|\"http://www.oasis-open.org.*\"||' docs/users_guide/users_guide.xml
 
 %build
 OPTFLAGS=`echo %optflags | sed -e "s|-O2||"`
