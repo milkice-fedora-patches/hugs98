@@ -1,15 +1,14 @@
-%define hugs_ver Mar2005-patched
+%define hugs_ver plus-May2006
 
 Name:		hugs98
-Version:	2005.03
-Release:	4%{?dist}
+Version:	2006.05
+Release:	1%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
 License:	BSD
 URL:		http://www.haskell.org/hugs
-Source0:	http://cvs.haskell.org/Hugs/downloads/Mar2005/%{name}-%{hugs_ver}.tar.gz
-Patch0:		openal-1.0_1.2.patch
+Source0:	http://cvs.haskell.org/Hugs/downloads/2006-05/%{name}-%{hugs_ver}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	docbook-utils
@@ -39,6 +38,16 @@ Requires:	%{name} = %{version}-%{release}
 
 %description openal
 OpenAL package for Hugs98.
+
+
+%package alut
+Summary:	ALUT package for Hugs98
+Group:		Development/Languages
+Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-openal = %{version}-%{release}
+
+%description alut
+ALUT package for Hugs98.
 
 
 %package x11
@@ -92,13 +101,13 @@ Demo files for Hugs98.
 
 %prep
 %setup -q -n %{name}-%{hugs_ver}
-%patch0 -p1
 
 
 %build
-%configure --with-pthreads
-touch src/stamp-h.in
-make %{_smp_mflags} CFLAGS="$RPM_OPT_FLAGS"
+OPTFLAGS=`echo %optflags | sed -e "s|-O2||"`
+%define optflags $OPTFLAGS
+%configure --with-pthreads --enable-char-encoding=utf8
+make %{?_smp_mflags}
 
 
 %install
@@ -110,6 +119,14 @@ find $RPM_BUILD_ROOT -name '*.so' -exec chmod 0755 '{}' ';'
 
 mv $RPM_BUILD_ROOT%{_libdir}/hugs/demos installed-demos
 rm installed-demos/Makefile.in
+
+mv $RPM_BUILD_ROOT%{_datadir}/hsc2hs-*/* $RPM_BUILD_ROOT%{_libdir}/hugs/programs/hsc2hs
+
+sed -i "s|^bindir.*|bindir=\"%{_bindir}\"|
+        s|^libdir.*|libdir=\"%{_libdir}/hugs/packages/hsc2hs|
+        s|^datadir.*|datadir=\"%{_libdir}/hugs/packages/hsc2hs\"|" \
+    $RPM_BUILD_ROOT%{_libdir}/hugs/programs/hsc2hs/Paths_hsc2hs.hs
+
 
 
 %clean
@@ -128,6 +145,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 %{_libdir}/hugs
 %exclude %{_libdir}/hugs/packages/OpenAL
+%exclude %{_libdir}/hugs/packages/ALUT
 %exclude %{_libdir}/hugs/packages/X11
 %exclude %{_libdir}/hugs/packages/OpenGL
 %exclude %{_libdir}/hugs/packages/GLUT
@@ -143,6 +161,11 @@ rm -rf $RPM_BUILD_ROOT
 %files openal
 %defattr(-,root,root,-)
 %{_libdir}/hugs/packages/OpenAL
+
+
+%files alut
+%defattr(-,root,root,-)
+%{_libdir}/hugs/packages/ALUT
 
 
 %files x11
@@ -166,6 +189,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jun 20 2006 Gerard Milmeister <gemi@bluewin.ch> - 2006.05-1
+- new version 2006.05 with libraries
+
 * Mon Apr 24 2006 Gerard Milmeister <gemi@bluewin.ch> - 2005.03-3
 - added patch provided by Jens Petersen to build OpenAL package
 
