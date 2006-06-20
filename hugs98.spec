@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.05
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -24,6 +24,7 @@ BuildRequires:	libXt-devel
 BuildRequires:	readline-devel
 BuildRequires:	xorg-x11-proto-devel
 BuildRequires:	openal-devel
+BuildRequires:	freealut-devel
 
 %description
 Hugs 98 is a functional programming system based on Haskell 98, the de
@@ -123,8 +124,8 @@ rm installed-demos/Makefile.in
 mv $RPM_BUILD_ROOT%{_datadir}/hsc2hs-*/* $RPM_BUILD_ROOT%{_libdir}/hugs/programs/hsc2hs
 
 sed -i "s|^bindir.*|bindir=\"%{_bindir}\"|
-        s|^libdir.*|libdir=\"%{_libdir}/hugs/packages/hsc2hs|
-        s|^datadir.*|datadir=\"%{_libdir}/hugs/packages/hsc2hs\"|" \
+        s|^libdir.*|libdir=\"%{_libdir}/hugs/programs/hsc2hs|
+        s|^datadir.*|datadir=\"%{_libdir}/hugs/programs/hsc2hs\"|" \
     $RPM_BUILD_ROOT%{_libdir}/hugs/programs/hsc2hs/Paths_hsc2hs.hs
 
 
