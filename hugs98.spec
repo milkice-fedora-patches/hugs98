@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.05
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -25,6 +25,7 @@ BuildRequires:	readline-devel
 BuildRequires:	xorg-x11-proto-devel
 BuildRequires:	openal-devel
 BuildRequires:	freealut-devel
+BuildRequires:	prelink
 
 %description
 Hugs 98 is a functional programming system based on Haskell 98, the de
@@ -117,6 +118,8 @@ rm -rf $RPM_BUILD_ROOT
 make DESTDIR=$RPM_BUILD_ROOT install_all_but_docs
 make -C docs DESTDIR=$RPM_BUILD_ROOT install_man
 
+execstack -s $RPM_BUILD_ROOT%{_bindir}/{hugs,runhugs,ffihugs}
+
 find $RPM_BUILD_ROOT -name '*.so' -exec chmod 0755 '{}' ';'
 
 mv $RPM_BUILD_ROOT%{_libdir}/hugs/demos installed-demos
@@ -191,6 +194,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jun 21 2006 Gerard Milmeister <gemi@bluewin.ch> - 2006.05-4
+- added execstack for the hugs binary
+
 * Tue Jun 20 2006 Gerard Milmeister <gemi@bluewin.ch> - 2006.05-1
 - new version 2006.05 with libraries
 
