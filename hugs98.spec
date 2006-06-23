@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.05
-Release:	4%{?dist}
+Release:	5%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -109,7 +109,7 @@ sed -i 's|\"http://www.oasis-open.org.*\"||' docs/users_guide/users_guide.xml
 %build
 OPTFLAGS=`echo %optflags | sed -e "s|-O2||"`
 %define optflags $OPTFLAGS
-%configure --with-pthreads --enable-char-encoding=utf8
+%configure --with-pthreads --enable-char-encoding=locale
 make %{?_smp_mflags}
 
 
@@ -194,6 +194,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jun 23 2006 Gerard Milmeister <gemi@bluewin.ch> - 2006.05-5
+- switch char encoding from utf-8 to locale
+
 * Wed Jun 21 2006 Gerard Milmeister <gemi@bluewin.ch> - 2006.05-4
 - added execstack for the hugs binary
 
