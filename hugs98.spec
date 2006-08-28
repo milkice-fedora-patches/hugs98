@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.05
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -194,6 +194,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Aug 28 2006 Gerard Milmeister <gemi@bluewin.ch> - 2006.05-6
+- Rebuild for FE6
+
 * Fri Jun 23 2006 Gerard Milmeister <gemi@bluewin.ch> - 2006.05-5
 - switch char encoding from utf-8 to locale
 
