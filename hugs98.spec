@@ -1,14 +1,14 @@
-%define hugs_ver plus-May2006
+%define hugs_ver plus-Sep2006
 
 Name:		hugs98
-Version:	2006.05
-Release:	6%{?dist}
+Version:	2006.09
+Release:	1%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
 License:	BSD
 URL:		http://www.haskell.org/hugs
-Source0:	http://cvs.haskell.org/Hugs/downloads/2006-05/%{name}-%{hugs_ver}.tar.gz
+Source0:	http://cvs.haskell.org/Hugs/downloads/2006-09/%{name}-%{hugs_ver}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	docbook-utils
@@ -194,6 +194,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Oct 30 2006 Gerard Milmeister <gemi@bluewin.ch> - 2006.09-1
+- new version Sep2006
+
 * Mon Aug 28 2006 Gerard Milmeister <gemi@bluewin.ch> - 2006.05-6
 - Rebuild for FE6
 
