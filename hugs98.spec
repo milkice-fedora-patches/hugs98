@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -194,6 +194,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Feb 11 2007 Gerard Milmeister <gemi@bluewin.ch> - 2006.09-2
+- rebuild to use ncurses
+
 * Mon Oct 30 2006 Gerard Milmeister <gemi@bluewin.ch> - 2006.09-1
 - new version Sep2006
 
