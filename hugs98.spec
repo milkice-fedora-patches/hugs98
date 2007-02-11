@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
