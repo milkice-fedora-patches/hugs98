@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -194,6 +194,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Feb 18 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 2006.09-4
+- Autorebuild for GCC 4.3
+
 * Sun Feb 11 2007 Gerard Milmeister <gemi@bluewin.ch> - 2006.09-2
 - rebuild to use ncurses
 
