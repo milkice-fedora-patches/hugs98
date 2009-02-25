@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	4%{?dist}
+Release:	5%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -194,6 +194,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2006.09-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
 * Mon Feb 18 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 2006.09-4
 - Autorebuild for GCC 4.3
 
