@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	4%{?dist}
+Release:	5%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -106,8 +106,9 @@ Demo files for Hugs98.
 # this is to avoid network lookup of the DTD
 sed -i 's|\"http://www.oasis-open.org.*\"||' docs/users_guide/users_guide.xml
 
+
 %build
-OPTFLAGS=`echo %optflags | sed -e "s|-O2||"`
+#OPTFLAGS=`echo %optflags | sed -e "s|-O2||"`
 %define optflags $OPTFLAGS
 %configure --with-pthreads --enable-char-encoding=locale
 make %{?_smp_mflags}
@@ -193,7 +194,27 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/hugs/packages/HGL
 
 
+%post
+update-alternatives --install %{_bindir}/runhaskell runhaskell \
+  %{_bindir}/runhugs 100
+update-alternatives --install %{_bindir}/hsc2hs hsc2hs \
+  %{_bindir}/hsc2hs-hugs 100
+update-alternatives --install %{_bindir}/cpphs cpphs \
+  %{_bindir}/cpphs-hugs 100
+
+
+%preun
+if [ "$1" = 0 ]; then
+  update-alternatives --remove runhaskell %{_bindir}/runhugs
+  update-alternatives --remove hsc2hs     %{_bindir}/hsc2hs-hugs
+  update-alternatives --remove cpphs      %{_bindir}/cpphs-hugs
+fi
+
+
 %changelog
+* Fri Jul  3 2009 Gerard Milmeister <gemi@bluewin.ch> - 2006.09-5
+- added alternatives setup for runhaskell and friends
+
 * Mon Feb 18 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 2006.09-4
 - Autorebuild for GCC 4.3
 
