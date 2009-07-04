@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -108,8 +108,6 @@ sed -i 's|\"http://www.oasis-open.org.*\"||' docs/users_guide/users_guide.xml
 
 
 %build
-#OPTFLAGS=`echo %optflags | sed -e "s|-O2||"`
-%define optflags $OPTFLAGS
 %configure --with-pthreads --enable-char-encoding=locale
 make %{?_smp_mflags}
 
@@ -212,7 +210,7 @@ fi
 
 
 %changelog
-* Fri Jul  3 2009 Gerard Milmeister <gemi@bluewin.ch> - 2006.09-5
+* Fri Jul  3 2009 Gerard Milmeister <gemi@bluewin.ch> - 2006.09-6
 - added alternatives setup for runhaskell and friends
 
 * Mon Feb 18 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 2006.09-4
