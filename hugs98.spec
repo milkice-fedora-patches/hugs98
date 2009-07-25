@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	6%{?dist}
+Release:	7%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -210,6 +210,9 @@ fi
 
 
 %changelog
+* Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2006.09-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
 * Fri Jul  3 2009 Gerard Milmeister <gemi@bluewin.ch> - 2006.09-6
 - added alternatives setup for runhaskell and friends
 
