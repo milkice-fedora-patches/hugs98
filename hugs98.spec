@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	6%{?dist}
+Release:	8%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -23,7 +23,7 @@ BuildRequires:	libXmu-devel
 BuildRequires:	libXt-devel
 BuildRequires:	readline-devel
 BuildRequires:	xorg-x11-proto-devel
-BuildRequires:	openal-devel
+BuildRequires:	openal-soft-devel
 BuildRequires:	freealut-devel
 BuildRequires:	prelink
 
@@ -210,6 +210,9 @@ fi
 
 
 %changelog
+* Sun Aug 16 2009 Gerard Milmeister <gemi@bluewin.ch> - 2006.09-8
+- rebuild against openal-soft
+
 * Fri Jul  3 2009 Gerard Milmeister <gemi@bluewin.ch> - 2006.09-6
 - added alternatives setup for runhaskell and friends
 
