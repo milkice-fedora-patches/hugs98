@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	7%{?dist}
+Release:	8%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -23,7 +23,7 @@ BuildRequires:	libXmu-devel
 BuildRequires:	libXt-devel
 BuildRequires:	readline-devel
 BuildRequires:	xorg-x11-proto-devel
-BuildRequires:	openal-devel
+BuildRequires:	openal-soft-devel
 BuildRequires:	freealut-devel
 BuildRequires:	prelink
 
@@ -210,6 +210,9 @@ fi
 
 
 %changelog
+* Sun Aug 16 2009 Gerard Milmeister <gemi@bluewin.ch> - 2006.09-8
+- rebuild against openal-soft
+
 * Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2006.09-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
