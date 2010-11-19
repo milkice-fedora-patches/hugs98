@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	8%{?dist}
+Release:	9%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -210,6 +210,9 @@ fi
 
 
 %changelog
+* Fri Nov 19 2010 Jens Petersen <petersen@redhat.com> - 2006.09-9
+- rebuild
+
 * Sun Aug 16 2009 Gerard Milmeister <gemi@bluewin.ch> - 2006.09-8
 - rebuild against openal-soft
 
