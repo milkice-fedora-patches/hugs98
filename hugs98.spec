@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	12%{?dist}
+Release:	13%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -210,6 +210,9 @@ fi
 
 
 %changelog
+* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2006.09-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
 * Thu Jul 19 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2006.09-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
