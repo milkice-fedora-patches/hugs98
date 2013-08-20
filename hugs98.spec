@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	15%{?dist}
+Release:	16%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -26,6 +26,9 @@ BuildRequires:	xorg-x11-proto-devel
 BuildRequires:	openal-soft-devel
 BuildRequires:	freealut-devel
 BuildRequires:	prelink
+%ifarch aarch64
+BuildRequires:	autoconf
+%endif
 
 %description
 Hugs 98 is a functional programming system based on Haskell 98, the de
@@ -214,6 +217,9 @@ fi
 
 
 %changelog
+* Wed Aug 21 2013 Jens Petersen <petersen@redhat.com> - 2006.09-16
+- BR autoconf for aarch64
+
 * Tue Aug 20 2013 Jens Petersen <petersen@redhat.com> - 2006.09-15
 - regenerate autoconf files on aarch64 (#925561)
 
