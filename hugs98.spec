@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	14%{?dist}
+Release:	15%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -105,6 +105,10 @@ Demo files for Hugs98.
 %setup -q -n %{name}-%{hugs_ver}
 # this is to avoid network lookup of the DTD
 sed -i 's|\"http://www.oasis-open.org.*\"||' docs/users_guide/users_guide.xml
+
+%ifarch aarch64
+autoconf
+%endif
 
 
 %build
@@ -210,6 +214,9 @@ fi
 
 
 %changelog
+* Tue Aug 20 2013 Jens Petersen <petersen@redhat.com> - 2006.09-15
+- regenerate autoconf files on aarch64 (#925561)
+
 * Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2006.09-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
