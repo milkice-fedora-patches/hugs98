@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	16%{?dist}
+Release:	17%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -120,32 +120,26 @@ make %{?_smp_mflags}
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install_all_but_docs
-make -C docs DESTDIR=$RPM_BUILD_ROOT install_man
+make DESTDIR=%{buildroot} install_all_but_docs
+make -C docs DESTDIR=%{buildroot} install_man
 
-execstack -s $RPM_BUILD_ROOT%{_bindir}/{hugs,runhugs,ffihugs}
+execstack -s %{buildroot}%{_bindir}/{hugs,runhugs,ffihugs}
 
-find $RPM_BUILD_ROOT -name '*.so' -exec chmod 0755 '{}' ';'
+find %{buildroot} -name '*.so' -exec chmod 0755 '{}' ';'
 
-mv $RPM_BUILD_ROOT%{_libdir}/hugs/demos installed-demos
+mv %{buildroot}%{_libdir}/hugs/demos installed-demos
 rm installed-demos/Makefile.in
 
-mv $RPM_BUILD_ROOT%{_datadir}/hsc2hs-*/* $RPM_BUILD_ROOT%{_libdir}/hugs/programs/hsc2hs
+mv %{buildroot}%{_datadir}/hsc2hs-*/* %{buildroot}%{_libdir}/hugs/programs/hsc2hs
 
 sed -i "s|^bindir.*|bindir=\"%{_bindir}\"|
         s|^libdir.*|libdir=\"%{_libdir}/hugs/programs/hsc2hs|
         s|^datadir.*|datadir=\"%{_libdir}/hugs/programs/hsc2hs\"|" \
-    $RPM_BUILD_ROOT%{_libdir}/hugs/programs/hsc2hs/Paths_hsc2hs.hs
+    %{buildroot}%{_libdir}/hugs/programs/hsc2hs/Paths_hsc2hs.hs
 
-
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%defattr(-,root,root,-)
 %doc License
 %doc Readme
 %doc Credits
@@ -165,37 +159,30 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files demos
-%defattr(-,root,root,-)
 %doc installed-demos/*
 
 
 %files openal
-%defattr(-,root,root,-)
 %{_libdir}/hugs/packages/OpenAL
 
 
 %files alut
-%defattr(-,root,root,-)
 %{_libdir}/hugs/packages/ALUT
 
 
 %files x11
-%defattr(-,root,root,-)
 %{_libdir}/hugs/packages/X11
 
 
 %files opengl
-%defattr(-,root,root,-)
 %{_libdir}/hugs/packages/OpenGL
 
 
 %files glut
-%defattr(-,root,root,-)
 %{_libdir}/hugs/packages/GLUT
 
 
 %files hgl
-%defattr(-,root,root,-)
 %{_libdir}/hugs/packages/HGL
 
 
@@ -217,6 +204,9 @@ fi
 
 
 %changelog
+* Sun Sep 29 2013 Jens Petersen <petersen@redhat.com> - 2006.09-17
+- buildroot spec file cleanup
+
 * Wed Aug 21 2013 Jens Petersen <petersen@redhat.com> - 2006.09-16
 - BR autoconf for aarch64
 
