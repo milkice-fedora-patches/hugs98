@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	18%{?dist}
+Release:	19%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -25,9 +25,8 @@ BuildRequires:	readline-devel
 BuildRequires:	xorg-x11-proto-devel
 BuildRequires:	openal-soft-devel
 BuildRequires:	freealut-devel
+%ifnarch aarch64 ppc64le
 BuildRequires:	prelink
-%ifarch aarch64
-BuildRequires:	autoconf
 %endif
 
 %description
@@ -108,10 +107,8 @@ Demo files for Hugs98.
 %setup -q -n %{name}-%{hugs_ver}
 # this is to avoid network lookup of the DTD
 sed -i 's|\"http://www.oasis-open.org.*\"||' docs/users_guide/users_guide.xml
-
-%ifarch aarch64
-autoconf
-%endif
+# Update config.guess/sub to fix builds on new architectures (aarch64/ppc64le)
+cp /usr/lib/rpm/config.* .
 
 
 %build
@@ -123,7 +120,9 @@ make %{?_smp_mflags}
 make DESTDIR=%{buildroot} install_all_but_docs
 make -C docs DESTDIR=%{buildroot} install_man
 
+%ifnarch aarch64 ppc64le
 execstack -s %{buildroot}%{_bindir}/{hugs,runhugs,ffihugs}
+%endif
 
 find %{buildroot} -name '*.so' -exec chmod 0755 '{}' ';'
 
@@ -204,6 +203,9 @@ fi
 
 
 %changelog
+* Fri Jun 13 2014 Peter Robinson <pbrobinson@fedoraproject.org> 2006.09-19
+- Fix build for aarch/ppc64le
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2006.09-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
