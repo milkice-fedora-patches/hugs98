@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	19%{?dist}
+Release:	20%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -203,6 +203,9 @@ fi
 
 
 %changelog
+* Sat Aug 16 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2006.09-20
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
 * Fri Jun 13 2014 Peter Robinson <pbrobinson@fedoraproject.org> 2006.09-19
 - Fix build for aarch/ppc64le
 
