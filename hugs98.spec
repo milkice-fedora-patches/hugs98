@@ -2,13 +2,14 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	21%{?dist}
+Release:	22%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
 License:	BSD
 URL:		http://www.haskell.org/hugs
 Source0:	http://cvs.haskell.org/Hugs/downloads/2006-09/%{name}-%{hugs_ver}.tar.gz
+Patch0:         hugs98-gnu.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	docbook-utils
@@ -105,6 +106,12 @@ Demo files for Hugs98.
 
 %prep
 %setup -q -n %{name}-%{hugs_ver}
+# add undefined struct
+%patch0 -p1 -b .gnu
+# use inline keyword
+sed -i 's|extern inline|inline|' packages/base/include/HsBase.h packages/network/include/HsNet.h packages/unix/include/HsUnix.h hsc2hs/Main.hs
+# libalut needs libopenal
+sed -i 's|ALUT_LIBS="$ac_cv_search_alutExit"|ALUT_LIBS="$ac_cv_search_alutExit -lopenal"|' packages/ALUT/configure
 # this is to avoid network lookup of the DTD
 sed -i 's|\"http://www.oasis-open.org.*\"||' docs/users_guide/users_guide.xml
 # Update config.guess/sub to fix builds on new architectures (aarch64/ppc64le)
@@ -112,6 +119,7 @@ cp /usr/lib/rpm/config.* .
 
 
 %build
+%define __global_ldflags ""
 %configure --with-pthreads --enable-char-encoding=locale
 make %{?_smp_mflags}
 
@@ -203,6 +211,9 @@ fi
 
 
 %changelog
+* Fri Jul 10 2015 Gérard Milmeister <gemi@bluewin.ch> - 2006.09-22
+- Build fixes
+
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2006.09-21
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 

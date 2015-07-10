@@ -1,0 +1,24 @@
+diff -up hugs98-plus-Sep2006/packages/network/include/HsNet.h.gnu hugs98-plus-Sep2006/packages/network/include/HsNet.h
+--- hugs98-plus-Sep2006/packages/network/include/HsNet.h.gnu	2006-09-21 00:28:56.000000000 +0200
++++ hugs98-plus-Sep2006/packages/network/include/HsNet.h	2015-07-10 13:39:37.824377073 +0200
+@@ -20,7 +20,7 @@
+ # if defined(_MSC_VER)
+ #  define INLINE extern __inline
+ # elif defined(__GNUC__)
+-#  define INLINE extern inline
++#  define INLINE inline
+ # else
+ #  define INLINE inline
+ # endif
+@@ -132,4 +132,11 @@ my_inet_ntoa(
+     return inet_ntoa(a);
+ }
+ 
++
++struct ucred {
++    pid_t pid;    /* process ID of the sending process */
++    uid_t uid;    /* user ID of the sending process */
++    gid_t gid;    /* group ID of the sending process */
++};
++
+ #endif
