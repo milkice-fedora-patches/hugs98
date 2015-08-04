@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	22%{?dist}
+Release:	23%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -27,7 +27,7 @@ BuildRequires:	xorg-x11-proto-devel
 BuildRequires:	openal-soft-devel
 BuildRequires:	freealut-devel
 %ifnarch aarch64 ppc64le
-BuildRequires:	prelink
+BuildRequires:	/usr/bin/execstack
 %endif
 
 %description
@@ -211,6 +211,9 @@ fi
 
 
 %changelog
+* Tue Aug 04 2015 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 2006.09-23
+- Use new execstack (#1247795)
+
 * Fri Jul 10 2015 Gérard Milmeister <gemi@bluewin.ch> - 2006.09-22
 - Build fixes
 
