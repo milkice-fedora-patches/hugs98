@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	23%{?dist}
+Release:	24%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -211,6 +211,9 @@ fi
 
 
 %changelog
+* Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 2006.09-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
 * Tue Aug 04 2015 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 2006.09-23
 - Use new execstack (#1247795)
 
