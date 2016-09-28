@@ -147,7 +147,7 @@ sed -i "s|^bindir.*|bindir=\"%{_bindir}\"|
 
 
 %files
-%doc License
+%license License
 %doc Readme
 %doc Credits
 %doc docs/ffi-notes.txt
