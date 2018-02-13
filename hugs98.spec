@@ -10,7 +10,6 @@ License:	BSD
 URL:		http://www.haskell.org/hugs
 Source0:	http://cvs.haskell.org/Hugs/downloads/2006-09/%{name}-%{hugs_ver}.tar.gz
 Patch0:         hugs98-gnu.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	docbook-utils
 BuildRequires:	freeglut-devel
