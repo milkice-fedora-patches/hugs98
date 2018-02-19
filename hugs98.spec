@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	29%{?dist}
+Release:	30%{?dist}
 Summary:	Haskell Interpreter
 
 Group:		Development/Languages
@@ -13,6 +13,7 @@ Patch0:         hugs98-gnu.patch
 
 BuildRequires:	docbook-utils
 BuildRequires:	freeglut-devel
+BuildRequires:	gcc
 BuildRequires:	libGL-devel
 BuildRequires:	libGLU-devel
 BuildRequires:	libICE-devel
@@ -210,6 +211,9 @@ fi
 
 
 %changelog
+* Mon Feb 19 2018 Jens Petersen <petersen@redhat.com> - 2006.09-30
+- BR gcc
+
 * Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2006.09-29
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
