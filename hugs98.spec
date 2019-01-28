@@ -5,7 +5,6 @@ Version:	2006.09
 Release:	31%{?dist}
 Summary:	Haskell Interpreter
 
-Group:		Development/Languages
 License:	BSD
 URL:		http://www.haskell.org/hugs
 Source0:	http://cvs.haskell.org/Hugs/downloads/2006-09/%{name}-%{hugs_ver}.tar.gz
@@ -38,7 +37,6 @@ facto standard for non-strict functional programming languages. Hugs
 
 %package openal
 Summary:	OpenAL package for Hugs98
-Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 
 %description openal
@@ -47,7 +45,6 @@ OpenAL package for Hugs98.
 
 %package alut
 Summary:	ALUT package for Hugs98
-Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-openal = %{version}-%{release}
 
@@ -57,7 +54,6 @@ ALUT package for Hugs98.
 
 %package x11
 Summary:	X11 package for Hugs98
-Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 
 %description x11
@@ -66,7 +62,6 @@ X11 package for Hugs98.
 
 %package opengl
 Summary:	OpenGL package for Hugs98
-Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 
 %description opengl
@@ -75,7 +70,6 @@ OpenGL package for Hugs98.
 
 %package glut
 Summary:	GLUT package for Hugs98
-Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-opengl = %{version}-%{release}
 
@@ -85,7 +79,6 @@ GLUT package for Hugs98.
 
 %package hgl
 Summary:	Haskell Graphics Library for Hugs98
-Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-x11 = %{version}-%{release}
 
@@ -95,7 +88,6 @@ Haskell Graphics Library for Hugs98.
 
 %package demos
 Summary:	Demo files for Hugs98
-Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-glut = %{version}-%{release}
 Requires:	%{name}-hgl = %{version}-%{release}
