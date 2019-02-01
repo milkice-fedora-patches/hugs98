@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	31%{?dist}
+Release:	32%{?dist}
 Summary:	Haskell Interpreter
 
 License:	BSD
@@ -203,6 +203,9 @@ fi
 
 
 %changelog
+* Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2006.09-32
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2006.09-31
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
