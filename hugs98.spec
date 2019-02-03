@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	32%{?dist}
+Release:	33%{?dist}
 Summary:	Haskell Interpreter
 
 License:	BSD
@@ -25,7 +25,7 @@ BuildRequires:	readline-devel
 BuildRequires:	xorg-x11-proto-devel
 BuildRequires:	openal-soft-devel
 BuildRequires:	freealut-devel
-%ifnarch aarch64 ppc64le
+%ifnarch aarch64 ppc64le x86_64
 BuildRequires:	/usr/bin/execstack
 %endif
 
@@ -120,7 +120,7 @@ make %{?_smp_mflags}
 make DESTDIR=%{buildroot} install_all_but_docs
 make -C docs DESTDIR=%{buildroot} install_man
 
-%ifnarch aarch64 ppc64le
+%ifnarch aarch64 ppc64le x86_64
 execstack -s %{buildroot}%{_bindir}/{hugs,runhugs,ffihugs}
 %endif
 
@@ -203,6 +203,9 @@ fi
 
 
 %changelog
+* Sun Feb  3 2019 Jens Petersen <petersen@redhat.com> - 2006.09-33
+- drop use of execstack on x86_64
+
 * Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2006.09-32
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
