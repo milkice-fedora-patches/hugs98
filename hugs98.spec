@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	33%{?dist}
+Release:	34%{?dist}
 Summary:	Haskell Interpreter
 
 License:	BSD
@@ -203,6 +203,9 @@ fi
 
 
 %changelog
+* Sun Feb 17 2019 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 2006.09-34
+- Rebuild for readline 8.0
+
 * Sun Feb  3 2019 Jens Petersen <petersen@redhat.com> - 2006.09-33
 - drop use of execstack on x86_64
 
