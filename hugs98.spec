@@ -30,9 +30,9 @@ BuildRequires:	/usr/bin/execstack
 %endif
 
 %description
-Hugs 98 is a functional programming system based on Haskell 98, the de
-facto standard for non-strict functional programming languages. Hugs
-98 provides an almost complete implementation of Haskell 98.
+Hugs 98 is a functional programming system based on Haskell 98,
+the de facto standard for non-strict functional programming languages.
+Hugs 98 provides an almost complete implementation of Haskell 98.
 
 
 %package openal
