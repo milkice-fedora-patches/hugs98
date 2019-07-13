@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	34%{?dist}
+Release:	35%{?dist}
 Summary:	Haskell Interpreter
 
 License:	BSD
@@ -185,24 +185,9 @@ sed -i "s|^bindir.*|bindir=\"%{_bindir}\"|
 %{_libdir}/hugs/packages/HGL
 
 
-%post
-update-alternatives --install %{_bindir}/runhaskell runhaskell \
-  %{_bindir}/runhugs 100
-update-alternatives --install %{_bindir}/hsc2hs hsc2hs \
-  %{_bindir}/hsc2hs-hugs 100
-update-alternatives --install %{_bindir}/cpphs cpphs \
-  %{_bindir}/cpphs-hugs 100
-
-
-%preun
-if [ "$1" = 0 ]; then
-  update-alternatives --remove runhaskell %{_bindir}/runhugs
-  update-alternatives --remove hsc2hs     %{_bindir}/hsc2hs-hugs
-  update-alternatives --remove cpphs      %{_bindir}/cpphs-hugs
-fi
-
-
 %changelog
+* Sat Jul 13 2019 Jens Petersen <petersen@redhat.com> - 2006.09-35
+- drop alternatives
 * Sun Feb 17 2019 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 2006.09-34
 - Rebuild for readline 8.0
 
