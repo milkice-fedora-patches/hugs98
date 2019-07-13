@@ -126,8 +126,7 @@ execstack -s %{buildroot}%{_bindir}/{hugs,runhugs,ffihugs}
 
 find %{buildroot} -name '*.so' -exec chmod 0755 '{}' ';'
 
-mv %{buildroot}%{_libdir}/hugs/demos installed-demos
-rm installed-demos/Makefile.in
+rm %{buildroot}%{_libdir}/hugs/demos/Makefile.in
 
 mv %{buildroot}%{_datadir}/hsc2hs-*/* %{buildroot}%{_libdir}/hugs/programs/hsc2hs
 
@@ -158,7 +157,7 @@ sed -i "s|^bindir.*|bindir=\"%{_bindir}\"|
 
 
 %files demos
-%doc installed-demos/*
+%{_libdir}/hugs/demos
 
 
 %files openal
