@@ -145,7 +145,11 @@ sed -i "s|^bindir.*|bindir=\"%{_bindir}\"|
 %doc docs/server.html
 %doc docs/libraries-notes.txt
 %doc docs/users_guide/users_guide
-%{_bindir}/*
+%{_bindir}/cpphs-hugs
+%{_bindir}/ffihugs
+%{_bindir}/hugs
+%{_bindir}/hsc2hs-hugs
+%{_bindir}/runhugs
 %{_libdir}/hugs
 %exclude %{_libdir}/hugs/packages/OpenAL
 %exclude %{_libdir}/hugs/packages/ALUT
@@ -153,7 +157,7 @@ sed -i "s|^bindir.*|bindir=\"%{_bindir}\"|
 %exclude %{_libdir}/hugs/packages/OpenGL
 %exclude %{_libdir}/hugs/packages/GLUT
 %exclude %{_libdir}/hugs/packages/HGL
-%{_mandir}/man*/*
+%{_mandir}/man1/hugs.1*
 
 
 %files demos
@@ -187,6 +191,8 @@ sed -i "s|^bindir.*|bindir=\"%{_bindir}\"|
 %changelog
 * Sat Jul 13 2019 Jens Petersen <petersen@redhat.com> - 2006.09-35
 - drop alternatives
+- more explicit filelists
+
 * Sun Feb 17 2019 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 2006.09-34
 - Rebuild for readline 8.0
 
