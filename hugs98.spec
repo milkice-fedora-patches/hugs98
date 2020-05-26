@@ -2,13 +2,14 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	37%{?dist}
+Release:	38%{?dist}
 Summary:	Haskell Interpreter
 
 License:	BSD
 URL:		http://www.haskell.org/hugs
 Source0:	http://cvs.haskell.org/Hugs/downloads/2006-09/%{name}-%{hugs_ver}.tar.gz
 Patch0:         hugs98-gnu.patch
+Patch1:		hugs98-config.patch
 
 BuildRequires:	docbook-utils
 BuildRequires:	freeglut-devel
@@ -100,6 +101,7 @@ Demo files for Hugs98.
 %setup -q -n %{name}-%{hugs_ver}
 # add undefined struct
 %patch0 -p1 -b .gnu
+%patch1 -p1 -b .config
 # use inline keyword
 sed -i 's|extern inline|inline|' packages/base/include/HsBase.h packages/network/include/HsNet.h packages/unix/include/HsUnix.h hsc2hs/Main.hs
 # libalut needs libopenal
@@ -189,6 +191,9 @@ sed -i "s|^bindir.*|bindir=\"%{_bindir}\"|
 
 
 %changelog
+* Tue May 26 2020 Jeff Law <law@redhat.com> - 2006.09-38
+- Fix configure test compromised by LTO.
+
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2006.09-37
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 

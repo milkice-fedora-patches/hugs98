@@ -1,0 +1,24 @@
+diff -Nrup a/configure b/configure
+--- a/configure	2006-09-20 16:34:03.000000000 -0600
++++ b/configure	2019-12-19 06:07:54.302627575 -0700
+@@ -11959,7 +11959,7 @@ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ 
+ #include <malloc.h>
+-int test1() {
++__attribute__ ((used)) int test1() {
+     return _alloca(42);
+ }
+ 
+diff -Nrup a/configure.ac b/configure.ac
+--- a/configure.ac	2006-05-03 08:10:36.000000000 -0600
++++ b/configure.ac	2019-12-19 06:07:27.468727400 -0700
+@@ -451,7 +451,7 @@ dnl Visual C++ doesn't have alloca, does
+ AC_CACHE_CHECK(for _alloca, ac_cv_c__alloca,
+ [AC_TRY_LINK([
+ #include <malloc.h>
+-int test1() {
++__attribute__ ((used)) int test1() {
+     return _alloca(42);
+ }
+ ],
