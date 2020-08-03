@@ -109,7 +109,7 @@ sed -i 's|ALUT_LIBS="$ac_cv_search_alutExit"|ALUT_LIBS="$ac_cv_search_alutExit -
 # this is to avoid network lookup of the DTD
 sed -i 's|\"http://www.oasis-open.org.*\"||' docs/users_guide/users_guide.xml
 # Update config.guess/sub to fix builds on new architectures (aarch64/ppc64le)
-cp /usr/lib/rpm/config.* .
+cp /usr/lib/rpm/redhat/config.* .
 
 
 %build
