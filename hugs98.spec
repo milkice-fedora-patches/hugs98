@@ -29,6 +29,7 @@ BuildRequires:	freealut-devel
 %ifnarch aarch64 ppc64le x86_64
 BuildRequires:	/usr/bin/execstack
 %endif
+BuildRequires: make
 
 %description
 Hugs 98 is a functional programming system based on Haskell 98,
