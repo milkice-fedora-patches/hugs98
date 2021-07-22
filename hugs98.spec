@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	41%{?dist}
+Release:	42%{?dist}
 Summary:	Haskell Interpreter
 
 License:	BSD
@@ -192,6 +192,9 @@ sed -i "s|^bindir.*|bindir=\"%{_bindir}\"|
 
 
 %changelog
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2006.09-42
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
 * Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2006.09-41
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
