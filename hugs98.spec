@@ -2,7 +2,7 @@
 
 Name:		hugs98
 Version:	2006.09
-Release:	43%{?dist}
+Release:	45%{?dist}
 Summary:	Haskell Interpreter
 
 License:	BSD
@@ -26,7 +26,7 @@ BuildRequires:	readline-devel
 BuildRequires:	xorg-x11-proto-devel
 BuildRequires:	openal-soft-devel
 BuildRequires:	freealut-devel
-%ifnarch aarch64 ppc64le x86_64
+%ifnarch aarch64 ppc64le x86_64 riscv64
 BuildRequires:	/usr/bin/execstack
 %endif
 BuildRequires: make
@@ -123,7 +123,7 @@ make %{?_smp_mflags}
 make DESTDIR=%{buildroot} install_all_but_docs
 make -C docs DESTDIR=%{buildroot} install_man
 
-%ifnarch aarch64 ppc64le x86_64
+%ifnarch aarch64 ppc64le x86_64 riscv64
 execstack -s %{buildroot}%{_bindir}/{hugs,runhugs,ffihugs}
 %endif
 
@@ -192,6 +192,9 @@ sed -i "s|^bindir.*|bindir=\"%{_bindir}\"|
 
 
 %changelog
+* Wed Jun 01 2022 Milkice Qiu <milkice@milkice.me> - 2006.09-44
+- Disable execstack for RISC-V (riscv64)
+
 * Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 2006.09-43
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
